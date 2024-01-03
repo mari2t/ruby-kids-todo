@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reward_url1: MyString
+  reward_url2: MyString
+  reward_url3: MyString
+  reward_url4: MyString
+  reward_url5: MyString
+  reward_url6: MyString
+  reward_url7: MyString
+  reward_url8: MyString
+  reward_url9: MyString
+  reward_url10: MyString
+  show_uncompleted_todos: false
+  display_in_hiragana: false
+
+two:
+  reward_url1: MyString
+  reward_url2: MyString
+  reward_url3: MyString
+  reward_url4: MyString
+  reward_url5: MyString
+  reward_url6: MyString
+  reward_url7: MyString
+  reward_url8: MyString
+  reward_url9: MyString
+  reward_url10: MyString
+  show_uncompleted_todos: false
+  display_in_hiragana: false
