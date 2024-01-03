@@ -1,0 +1,43 @@
+<h1>きょうのやること</h1>
+<%= form_with(model: @task, local: true) do |form| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <ul>
+        <% @task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="input-button-container">
+    <div class="input-container">
+      <%= form.label "やること" %>
+      <%= form.text_field :title %>
+    </div>
+    <div class="determine">
+      <%= form.submit "決定" %>
+    </div>
+  </div>
+<% end %>
+<div class="inner-tasklist">
+  <ul>
+    <% @tasks.each do |task| %>
+      <li id="task_<%= task.id %>" >
+        <div class="inner-task">
+          <h2 class="<%= 'completed' if task.completed %>"><%= task.title %></h2>
+          <p class="<%= 'completed' if task.completed %>"><%= task.content %></p>
+          <div class="compete-edit-delete-wrapper">
+            <% if task.completed %>
+              <div class="competed-text">🌸できました🌸</div>
+            <% else %>
+              <%= button_to "できた", complete_task_path(task), method: :put, remote: true, class: "complete-task-button" %>
+            <% end %>
+            <%= link_to "かえる", edit_task_path(task), class: "link-change-button" %>
+            <%= button_to "けす", task_path(task), method: :delete, class: "link-delete-button" %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

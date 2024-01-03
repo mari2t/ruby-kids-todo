@@ -1,15 +1,271 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* 基本スタイル */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+/* index */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-container,
+.inner-tasklist {
+  width: 80%;
+  margin: 0 auto; /* 中央寄せ */
+}
+.input-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 子要素を垂直方向の中心に配置 */
+}
+.input-container {
+  width: 60%; /* 幅の調整 */
+  margin-right: 20px; /* 右の余白を設定 */
+}
+.field {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+input[type="text"],
+textarea {
+  width: 80%; /* 幅の設定 */
+  padding: 10px; /* パディングの設定 */
+}
+/* アクションボタンのスタイリング */
+.determine {
+  display: flex;
+  align-items: center; /* ボタンを垂直方向の中心に配置 */
+  justify-content: center; /* ボタンを水平方向の中心に配置 */
+}
+
+.determine input[type="submit"],
+.determine button {
+  background-color: #0066ff;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+}
+
+.determine input[type="submit"]:hover,
+.determine button:hover {
+  background-color: #0056e0; /* ホバー時の背景色を変更 */
+}
+
+.button-container {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.determine-button,
+.complete-task-button {
+  background-color: #0066ff;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+}
+
+.link-change-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+}
+.link-delete-button {
+  background-color: #cc0000;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+}
+
+.link-change-button:hover,
+.complete-task-button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid;
+}
+
+/* タスクリストのスタイル */
+.inner-tasklist {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1em 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+li {
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 30%;
+  margin-bottom: 1em;
+}
+
+ul::after {
+  content: "";
+  width: 30%;
+}
+
+.inner-task {
+  padding: 1em;
+}
+/* タスクが完了した場合のスタイル */
+.completed {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+.competed-text {
+  color: rgb(25, 6, 6);
+  font-weight: bolder;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  border: none;
+}
+
+/* フォームコンテナのスタイリング */
+.form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  margin: 20px auto;
+}
+
+/* フォーム内のフィールドスタイリング */
+.field {
+  margin-bottom: 20px;
+}
+
+/* ラベルスタイリング */
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* テキストフィールドとテキストエリアのスタイリング */
+.field input[type="text"],
+.field textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* チェックボックスのスタイリング */
+.field input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* エラーメッセージのスタイリング */
+#error_explanation {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+#error_explanation h2 {
+  margin-top: 0;
+}
+
+#error_explanation ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#error_explanation li {
+  margin-bottom: 5px;
+}
+
+/* ボタンスタイリング */
+.actions input[type="submit"] {
+  background-color: #0066ff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.actions input[type="submit"]:hover {
+  background-color: #0056e0;
+}
+
+/* リンクボタンスタイリング */
+.link-button {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+.link-button:hover {
+  background-color: #45a049;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+  li {
+    width: calc(80% - 10px); /* 2列で表示 */
+  }
+}
+
+.compete-edit-delete-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}

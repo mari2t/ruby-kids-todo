@@ -1,0 +1,27 @@
+<h1>やること　を　かえる</h1>
+<%= form_with(model: @task, local: true) do |form| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <ul>
+        <% @task.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="input-container">
+    <div class="field">
+      <%= form.label "やること" %><br>
+      <%= form.text_field :title %>
+    </div>
+  </div>
+  <div class="field">
+    <%= form.label :completed, '完了' %>
+    <%= form.check_box :completed %>
+  </div>
+  <div class="actions">
+    <%= form.submit "更新" %>
+  </div>
+<% end %>
+<%= link_to '戻る', tasks_path %>
