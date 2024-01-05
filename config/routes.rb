@@ -8,11 +8,12 @@ Rails.application.routes.draw do
   # ルートパスをtasksコントローラーのindexアクションに設定
   root "tasks#index"
 
-  # localhost:3000/posts
   resources :tasks, only: [:index, :new, :create, :edit, :update, :destroy] do
     member do
       put :complete 
     end
   end
 
+  resource :settings, only: [:index, :show, :edit, :update]
+  
 end

@@ -1,5 +1,14 @@
 # MakeLog
 
+## 2024/1/5
+
+1. settingsのコントローラ作成。rails generate controller Settings
+2. settingsという名前は特定の名前と被りそうだから次回は避けた方が良いかも?
+3. コントローラーのファイル名は複数形にする
+4. @setting変数がnilというエラーのためseedファイルに追記
+5. 初期データをデータベースにロードする　bin/rails db:seed
+6. localhost:3000/settingでRouting Error
+
 ## 2024/1/4
 
 1. controller と view を作成。コマンドで二つ同時に作成される。  

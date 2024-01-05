@@ -1,0 +1,21 @@
+<h1>設定</h1>
+<div class="settings-container">
+  <% (1..10).each do |i| %>
+    <div class="setting-item">
+      <label>報酬 URL <%= i %></label>
+      <p><%= @setting.send("reward_url#{i}") %></p>
+    </div>
+  <% end %>
+  <div class="setting-item">
+    <label>未完了のTODOを表示</label>
+    <p><%= @setting.show_uncompleted_todos ? 'はい' : 'いいえ' %></p>
+  </div>
+  <div class="setting-item">
+    <label>背景表示</label>
+    <p><%= @setting.display_background %></p>
+  </div>
+</div>
+<div class="edit-return-buttons">
+  <%= link_to '編集', edit_setting_path(@setting), class: "edit-button" %>
+  <%= link_to '戻る', root_path, class: "return-button" %>
+</div>
