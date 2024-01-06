@@ -13,10 +13,10 @@ class SettingsController < ApplicationController
 
     def update
         if @setting.update(setting_params)
-            redirect_to settings_path
-        else 
+            redirect_to settings_path, notice: '設定が更新されました。'
+          else
             render :edit
-        end
+          end
     end
 
     private

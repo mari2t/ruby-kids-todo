@@ -1,5 +1,16 @@
 # MakeLog
 
+## 2024/1/6
+
+1. settingsのeditページ作成
+2. localhost:3000/rails/info/routes でルーティング設定を確認できる
+3. SQLiteの中身の確認(Settingsテーブルのseedが反映されていないようだったので確認)
+   1. rails db
+   2. SELECT * FROM settings; ※コロンを忘れずに、Shift+Insertでペースト
+   3. 出力　1||||||ｓ|||||0||2024-01-05 10:40:38.670922|2024-01-05 11:55:19.094200
+   4. 反映されていない？上書きされた？で空の状態が判明
+   5. .quitで終了
+
 ## 2024/1/5
 
 1. settingsのコントローラ作成。rails generate controller Settings
