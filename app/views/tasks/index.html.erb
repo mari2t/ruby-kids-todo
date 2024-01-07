@@ -29,10 +29,9 @@
       <li id="task_<%= task.id %>" >
         <div class="inner-task">
           <h2 class="<%= 'completed' if task.completed %>"><%= task.title %></h2>
-          <p class="<%= 'completed' if task.completed %>"><%= task.content %></p>
           <div class="compete-edit-delete-wrapper">
             <% if task.completed %>
-              <div class="competed-text">🌸できました🌸</div>
+              <div class="competed-text">💎ごほうび💎</div>
             <% else %>
               <%= button_to "できた", complete_task_path(task), method: :put, remote: true, class: "complete-task-button" %>
             <% end %>

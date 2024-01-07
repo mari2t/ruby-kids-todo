@@ -1,5 +1,18 @@
 # MakeLog
 
+## 2024/1/7
+
+1. seedファイルの確認
+   1. bin/rails db:seed　で確認→エラーなし
+   2. rails console→Setting.allでSettingsのデータを確認したところ二つidがあり、  
+      一つ目が空データで二つ目がseedファイルで更新されていた。
+2. Setting.first.destroy で空データを削除。seedファイルの設定が表示された。  
+   更新もできる状態。
+3. seedファイル作成前にデータがあった、または Setting.createを使用しているから等が原因だったみたい。  
+   createの代わりに既存レコードを更新するfind_or_create_byというのもある。  
+   ただ、今回はこれでいったん進める。
+   
+
 ## 2024/1/6
 
 1. settingsのeditページ作成

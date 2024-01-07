@@ -13,12 +13,20 @@ class TasksController < ApplicationController
 
     def create
         @task = Task.new(task_params)
-        @task.deadline = Date.today  # 現在の日付をdeadlineに設定
-
-        if @task.save
-            redirect_to tasks_path
-        else 
+      
+        # 今日の日付でフィルタリング
+        start_of_day = Date.today.beginning_of_day
+        end_of_day = Date.today.end_of_day
+      
+        # 今日作成されたタスクの数をカウント
+        if Task.where(created_at: start_of_day..end_of_day).count < 10
+          if @task.save
+            redirect_to tasks_url, notice: 'タスクが追加されました。'
+          else
             render :new
+          end
+        else
+          redirect_to tasks_url, alert: '本日のタスク数が上限に達しています。'
         end
     end
 
