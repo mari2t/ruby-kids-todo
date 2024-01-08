@@ -48,13 +48,17 @@ class TasksController < ApplicationController
 
     def complete
         @task = Task.find(params[:id])
-        @task.update(completed: true)
+        @task.update(completed: true, completion_date: Date.today)
     
         respond_to do |format|
           format.html { redirect_to tasks_url }
           format.js   # JavaScriptのレスポンスを扱う
         end
     end
+
+    def past_tasks
+        @tasks = Task.where("completion_date <= ?", Date.today)
+      end
 
     private
     

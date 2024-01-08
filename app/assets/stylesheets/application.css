@@ -6,6 +6,31 @@ body {
   padding: 20px;
 }
 
+/* ヘッダーのスタイル */
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bolder;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.header-title {
+  font-size: x-large;
+  text-align: center;
+}
+
+header nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: white;
+}
+
 /* index */
 h1 {
   text-align: center;
@@ -38,53 +63,25 @@ textarea {
   width: 80%; /* 幅の設定 */
   padding: 10px; /* パディングの設定 */
 }
-/* アクションボタンのスタイリング */
-.determine {
-  display: flex;
-  align-items: center; /* ボタンを垂直方向の中心に配置 */
-  justify-content: center; /* ボタンを水平方向の中心に配置 */
-}
 
-.determine input[type="submit"],
-.determine button {
-  background-color: #0066ff;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border: none;
-}
+/* ボタンのスタイリング */
 
-.determine input[type="submit"]:hover,
-.determine button:hover {
-  background-color: #0056e0; /* ホバー時の背景色を変更 */
-}
-
-.link-setting-button {
-  background-color: #000;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border: none;
-}
 .button-container {
   margin-bottom: 20px;
   display: flex;
 }
 
-.determine-button,
-.complete-task-button {
+.determine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.determine input[type="submit"],
+.determine button,
+.complete-task-button,
+.edit-button,
+.save-button {
   background-color: #0066ff;
   color: white;
   padding: 10px 20px;
@@ -96,9 +93,20 @@ textarea {
   transition-duration: 0.4s;
   cursor: pointer;
   border: none;
+  border-radius: 10px;
 }
 
-.link-change-button {
+.determine input[type="submit"]:hover,
+.determine button:hover,
+.complete-task-button:hover,
+.edit-button:hover,
+.save-button:hover {
+  background-color: #0056e0; /* ホバー時の背景色を変更 */
+}
+
+.link-change-button,
+.return-button,
+.cancel-button {
   background-color: #4caf50;
   color: white;
   padding: 10px 20px;
@@ -110,7 +118,15 @@ textarea {
   transition-duration: 0.4s;
   cursor: pointer;
   border: none;
+  border-radius: 10px;
 }
+
+.link-change-button:hover,
+.return-button:hover,
+.cancel-button:hover {
+  background-color: #2d672f; /* ホバー時の背景色を変更 */
+}
+
 .link-delete-button {
   background-color: #cc0000;
   color: white;
@@ -123,13 +139,11 @@ textarea {
   transition-duration: 0.4s;
   cursor: pointer;
   border: none;
+  border-radius: 10px;
 }
 
-.link-change-button:hover,
-.complete-task-button:hover {
-  background-color: white;
-  color: black;
-  border: 1px solid;
+.link-delete-button:hover {
+  background-color: #640202;
 }
 
 /* タスクリストのスタイル */
@@ -165,7 +179,6 @@ ul::after {
 /* タスクが完了した場合のスタイル */
 .completed {
   color: #ccc;
-  text-decoration: line-through;
 }
 
 .competed-text {
@@ -251,23 +264,63 @@ ul::after {
   font-size: 16px;
 }
 
-.actions input[type="submit"]:hover {
+.actions input[type="submit"]:hover,
+.edit-button:hover {
   background-color: #0056e0;
 }
 
-/* リンクボタンスタイリング */
-.link-button {
-  display: inline-block;
-  padding: 10px 15px;
-  background-color: #4caf50;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  margin-top: 20px;
+/* 設定コンテナのスタイル */
+.settings-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.link-button:hover {
-  background-color: #45a049;
+/* 各設定項目のスタイル */
+.setting-item {
+  margin-bottom: 20px;
+}
+
+.setting-item label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* 編集フォームのスタイリング */
+.edit-form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.edit-form-group {
+  margin-bottom: 20px;
+}
+
+.edit-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: bold;
+}
+
+.edit-form-group input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* チェックボックスのスタイル調整 */
+.edit-form-group input[type="checkbox"] {
+  margin-right: 10px;
 }
 
 /* レスポンシブ対応 */

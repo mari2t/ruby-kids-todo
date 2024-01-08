@@ -1,37 +1,51 @@
-<h1>きょうのやること</h1>
-<%= form_with(model: @task, local: true) do |form| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
-      <ul>
-        <% @task.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<h1>📝きょうのやること</h1>
+<%# タスクを作成 %>
+<% start_of_day = Date.today.beginning_of_day %>
+<% end_of_day = Date.today.end_of_day %>
+<% if Task.where(created_at: start_of_day..end_of_day).count < 10 %>
+  <%= form_with(model: @task, local: true) do |form| %>
+    <% if @task.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+        <ul>
+          <% @task.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="input-button-container">
+      <div class="input-container">
+        <%= form.label "やること" %>
+        <%= form.text_field :title %>
+      </div>
+      <div class="determine">
+        <%= form.submit "決定" %>
+      </div>
     </div>
   <% end %>
-  <div class="input-button-container">
-    <div class="input-container">
-      <%= form.label "やること" %>
-      <%= form.text_field :title %>
-    </div>
-    <div class="determine">
-      <%= form.submit "決定" %>
-    </div>
-  </div>
-  <div>
-    <%= link_to "設定", settings_path, class: "link-setting-button" %>
-  </div>
+<% else %>
+  <p>きょうはこれくらいにしておこう！</p>
 <% end %>
+<%# settingsからご褒美URLを取得 %>
+<% reward_urls = Setting.first.attributes.values_at(
+  "reward_url1", "reward_url2", "reward_url3", "reward_url4", "reward_url5",
+  "reward_url6", "reward_url7", "reward_url8", "reward_url9", "reward_url10"
+) %>
+<%# タスクリストを展開 %>
 <div class="inner-tasklist">
   <ul>
-    <% @tasks.each do |task| %>
-      <li id="task_<%= task.id %>" >
+    <% @tasks.each_with_index do |task, index| %>
+      <li id="task_<%= task.id %>">
         <div class="inner-task">
           <h2 class="<%= 'completed' if task.completed %>"><%= task.title %></h2>
           <div class="compete-edit-delete-wrapper">
             <% if task.completed %>
-              <div class="competed-text">💎ごほうび💎</div>
+              <% if reward_urls[index] %>
+                <%= link_to "💎ごほうび💎", reward_urls[index], target: "_blank", class: "reward-link" %>
+              <% else %>
+                <div class="competed-text">💎ごほうび💎</div>
+              <% end %>
             <% else %>
               <%= button_to "できた", complete_task_path(task), method: :put, remote: true, class: "complete-task-button" %>
             <% end %>

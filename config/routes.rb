@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     member do
       put :complete 
     end
+
+    collection do
+      get :past_tasks
+    end
+    
   end
 
   resource :settings, only: [:index, :show, :edit, :update]

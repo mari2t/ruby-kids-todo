@@ -8,4 +8,6 @@
 
 ## Other
 
+[設計ログ](./PlanLog.md)
+
 [作成ログ](./MakeLog.md)
