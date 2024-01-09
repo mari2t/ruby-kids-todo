@@ -2,8 +2,9 @@ class TasksController < ApplicationController
     before_action :set_task, only: [:edit, :update, :destroy]
 
     def index
-        @tasks = Task.all
         @task = Task.new  
+        @tasks = Task.where("created_at >= ? AND created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
+        @tasks_by_date = Task.all.group_by { |task| task.created_at.to_date }
     end
 
     def new
@@ -57,8 +58,9 @@ class TasksController < ApplicationController
     end
 
     def past_tasks
-        @tasks = Task.where("completion_date <= ?", Date.today)
-      end
+      @tasks_by_date = Task.where("completion_date <= ?", Date.today)
+      .group_by { |task| task.completion_date }
+    end
 
     private
     
