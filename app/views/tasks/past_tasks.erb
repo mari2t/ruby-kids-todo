@@ -1,22 +1,24 @@
 <h1>📖これまでのやること</h1>
-<div class="inner-tasklist">
-  <% @tasks_by_date.each do |date, tasks| %>
-    <h2><%= date %></h2>
-    <ul>
-      <% tasks.each do |task| %>
-        <li>
-          <div class="inner-task">
-            <h3 class="<%= 'completed' if task.completed %>"><%= task.title %></h3>
-            <%= task.content %>
-            完了日: <%= task.completion_date %>
-            <% if task.completed %>
-              <span>完了</span>
-            <% else %>
-              <span>未完了</span>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
+<% if @tasks_by_date %>
+  <div class="inner-tasklist">
+    <% @tasks_by_date.each do |date, tasks| %>
+      <h2><%= date %></h2>
+      <ul>
+        <% tasks.each do |task| %>
+          <li>
+            <div class="inner-task">
+              <h3 class="<%= 'completed' if task.completed %>"><%= task.title %></h3>
+              <%= task.content %>
+              完了日: <%= task.completion_date %>
+              <% if task.completed %>
+                <span>完了</span>
+              <% else %>
+                <span>未完了</span>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+<% end %>

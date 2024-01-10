@@ -33,27 +33,29 @@
   "reward_url6", "reward_url7", "reward_url8", "reward_url9", "reward_url10"
 ) %>
 <%# タスクリストを展開 %>
-<div class="inner-tasklist">
-  <ul>
-    <% @tasks.each_with_index do |task, index| %>
-      <li id="task_<%= task.id %>">
-        <div class="inner-task">
-          <h2 class="<%= 'completed' if task.completed %>"><%= task.title %></h2>
-          <div class="compete-edit-delete-wrapper">
-            <% if task.completed %>
-              <% if reward_urls[index] %>
-                <%= link_to "💎ごほうび💎", reward_urls[index], target: "_blank", class: "reward-link" %>
+<% if @tasks.present? %>
+  <div class="inner-tasklist">
+    <ul>
+      <% @tasks.each_with_index do |task, index| %>
+        <li id="task_<%= task.id %>">
+          <div class="inner-task">
+            <h2 class="<%= 'completed' if task.completed %>"><%= task.title %></h2>
+            <div class="compete-edit-delete-wrapper">
+              <% if task.completed %>
+                <% if reward_urls[index] %>
+                  <%= link_to "💎ごほうび💎", reward_urls[index], target: "_blank", class: "reward-link" %>
+                <% else %>
+                  <div class="competed-text">💎ごほうび💎</div>
+                <% end %>
               <% else %>
-                <div class="competed-text">💎ごほうび💎</div>
+                <%= button_to "できた", complete_task_path(task), method: :put, remote: true, class: "complete-task-button" %>
               <% end %>
-            <% else %>
-              <%= button_to "できた", complete_task_path(task), method: :put, remote: true, class: "complete-task-button" %>
-            <% end %>
-            <%= link_to "かえる", edit_task_path(task), class: "link-change-button" %>
-            <%= button_to "けす", task_path(task), method: :delete, class: "link-delete-button" %>
+              <%= link_to "かえる", edit_task_path(task), class: "link-change-button" %>
+              <%= button_to "けす", task_path(task), method: :delete, class: "link-delete-button" %>
+            </div>
           </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-</div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

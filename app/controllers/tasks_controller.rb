@@ -2,10 +2,22 @@ class TasksController < ApplicationController
     before_action :set_task, only: [:edit, :update, :destroy]
 
     def index
-        @task = Task.new  
-        @tasks = Task.where("created_at >= ? AND created_at <= ?", Date.today.beginning_of_day, Date.today.end_of_day)
-        @tasks_by_date = Task.all.group_by { |task| task.created_at.to_date }
+      @task = Task.new  
+      show_uncompleted = Setting.last.show_uncompleted_todos # Settingの最後のレコードを直接使用
+    
+      if show_uncompleted
+          @tasks_by_date = Task.all.group_by { |task| task.created_at.to_date }
+      else
+          @tasks_by_date = Task.where(completed: true).group_by { |task| task.created_at.to_date }
+      end
+    
+      # 今日の日付でフィルタリングされたタスクのリストを@tasks変数に割り当てる
+      start_of_day = Date.today.beginning_of_day
+      end_of_day = Date.today.end_of_day
+      @tasks = Task.where(created_at: start_of_day..end_of_day)
     end
+    
+
 
     def new
         @task = Task.new
@@ -58,9 +70,16 @@ class TasksController < ApplicationController
     end
 
     def past_tasks
-      @tasks_by_date = Task.where("completion_date <= ?", Date.today)
-      .group_by { |task| task.completion_date }
+        show_uncompleted = Setting.last.show_uncompleted_todos
+    
+        if show_uncompleted
+            @tasks_by_date = Task.where("completion_date <= ?", Date.today).group_by { |task| task.completion_date }
+        else
+          @tasks_by_date = Task.where("completed = ? AND completion_date <= ?", true, Date.today).group_by { |task| task.completion_date }
+
+        end
     end
+  
 
     private
     
