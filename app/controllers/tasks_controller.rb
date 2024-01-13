@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
     def index
       @task = Task.new  
-      show_uncompleted = Setting.last.show_uncompleted_todos # Settingの最後のレコードを直接使用
+      show_uncompleted = Setting.last.show_uncompleted_todos 
     
       if show_uncompleted
           @tasks_by_date = Task.all.group_by { |task| task.created_at.to_date }
@@ -69,16 +69,17 @@ class TasksController < ApplicationController
         end
     end
 
-    def past_tasks
-        show_uncompleted = Setting.last.show_uncompleted_todos
-    
-        if show_uncompleted
-            @tasks_by_date = Task.where("completion_date <= ?", Date.today).group_by { |task| task.completion_date }
-        else
-          @tasks_by_date = Task.where("completed = ? AND completion_date <= ?", true, Date.today).group_by { |task| task.completion_date }
+def past_tasks
+  @show_uncompleted = Setting.last.show_uncompleted_todos
 
-        end
-    end
+  if @show_uncompleted
+    # 未完了のタスクも含む全てのタスクを取得
+    @tasks_by_date = Task.where("created_at <= ?", Date.tomorrow).group_by { |task| task.created_at.to_date }
+  else
+    # 完了したタスクのみを取得
+    @tasks_by_date = Task.where("completed = ? AND created_at <= ?", true, Date.tomorrow).group_by { |task| task.created_at.to_date }
+  end
+end
   
 
     private

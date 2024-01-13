@@ -5,18 +5,20 @@
       <h2><%= date %></h2>
       <ul>
         <% tasks.each do |task| %>
-          <li>
-            <div class="inner-task">
-              <h3 class="<%= 'completed' if task.completed %>"><%= task.title %></h3>
-              <%= task.content %>
-              完了日: <%= task.completion_date %>
-              <% if task.completed %>
-                <span>完了</span>
-              <% else %>
-                <span>未完了</span>
-              <% end %>
-            </div>
-          </li>
+          <% if @show_uncompleted || task.completed %>
+            <li>
+              <div class="inner-task">
+                <h3 class="<%= 'completed' if task.completed %>"><%= task.title %></h3>
+                <%= task.content %>
+                完了日: <%= task.completion_date %>
+                <% if task.completed %>
+                  <span>完了</span>
+                <% else %>
+                  <span>未完了</span>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     <% end %>

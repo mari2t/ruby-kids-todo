@@ -2,6 +2,24 @@
 
 ## 2024/1/10
 
+1. @を付けるとビューで使える変数になる。
+2. 未完了のタスク表示をTrueにしても表示されない。
+   1. Setting.last.show_uncompleted_todosの値が間違っている？  
+      →rails console→Setting.allで確認した。  
+      Settingsには一つのレコードしかなくshow_uncompleted_todosの値は指定の値になっていた。
+   2. 未完了のタスクが無いから表示されない？  
+      →rails console→Tasks.allで確認した。未完了のタスクが無かった…。  
+      と思ったけどrailsでのコンソール出力は初期設定だと11レコードの制限があるらしい。  
+      →Task.all.each { |task| puts task }で一つずつすべてのタスクを表示したら  
+      未完了のタスクがあった。
+   3. 解決！completion_date が今日以前の日付を取得していたが、  
+      未完了だとcompletion_dateがnillになっていたので取得できていなかった。
+3. これまでのやることの日付ごとのグループがおかしい。  
+   〇　group_by { |task| task.completion_date }  
+   ✕　group_by { |task| task.created_at.to_date } ※.to_dateで日付型にする
+
+## 2024/1/10
+
 1. settingのshow_uncompleted_todosによって画面表示を変更出来るように修正中
 
 ## 2024/1/9
