@@ -3,6 +3,13 @@
   <div class="inner-tasklist">
     <% @tasks_by_date.each do |date, tasks| %>
       <h2><%= date %></h2>
+      <% comment = Comment.find_by(date: date) %>
+      <p><%= comment&.comment || 'コメントはまだありません。' %></p>
+      <% if comment %>
+        <%= link_to 'コメントを編集', edit_comment_path(comment) %>
+      <% else %>
+        <%= link_to 'コメントを追加', new_comment_path(date: date) %>
+      <% end %>
       <ul>
         <% tasks.each do |task| %>
           <% if @show_uncompleted || task.completed %>
@@ -10,11 +17,10 @@
               <div class="inner-task">
                 <h3 class="<%= 'completed' if task.completed %>"><%= task.title %></h3>
                 <%= task.content %>
-                完了日: <%= task.completion_date %>
                 <% if task.completed %>
-                  <span>完了</span>
+                  <span class="status-label">😄できた</span>
                 <% else %>
-                  <span>未完了</span>
+                  <span class="status-label">🥶できなかった</span>
                 <% end %>
               </div>
             </li>

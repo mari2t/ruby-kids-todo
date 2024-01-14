@@ -1,0 +1,9 @@
+<%= form_with(model: @comment, url: comment_path(@comment), method: :patch) do |form| %>
+  <div class="field">
+    <%= form.label :comment, 'コメント' %>
+    <%= form.text_area :comment %>
+  </div>
+  <div class="actions">
+    <%= form.submit "更新する" %>
+  </div>
+<% end %>

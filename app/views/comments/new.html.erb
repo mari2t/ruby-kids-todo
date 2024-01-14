@@ -1,0 +1,9 @@
+<% # app/views/comments/new.html.erb %>
+<%= form_with(model: @comment, url: comments_path) do |form| %>
+  <%= form.hidden_field :date %>
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_area :comment %>
+  </div>
+  <%= form.submit "コメントを保存" %>
+<% end %>

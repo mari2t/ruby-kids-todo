@@ -66,6 +66,12 @@ textarea {
 
 /* ボタンのスタイリング */
 
+.compete-edit-delete-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
 .button-container {
   margin-bottom: 20px;
   display: flex;
@@ -124,7 +130,7 @@ textarea {
 .link-change-button:hover,
 .return-button:hover,
 .cancel-button:hover {
-  background-color: #2d672f; /* ホバー時の背景色を変更 */
+  background-color: #2d672f;
 }
 
 .link-delete-button {
@@ -323,15 +329,87 @@ ul::after {
   margin-right: 10px;
 }
 
+/* past_tasks */
+/* past_tasks */
+
+.task-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-edit-delete-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  border: dashed lightslategray;
+}
+.comment-title {
+  font-weight: bolder;
+  margin: auto;
+  align-items: center;
+}
+
+.add-comment-button {
+  background-color: #0066ff;
+  color: white;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+.add-comment-button:hover {
+  background-color: #0056e0; /* ホバー時の背景色を変更 */
+}
+
+.edit-comment-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+.edit-comment-button:hover {
+  background-color: #2d672f;
+}
+
+.delete-comment-button {
+  background-color: #cc0000;
+  color: white;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+.delete-comment-button:hover {
+  background-color: #640202;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 600px) {
   li {
     width: calc(80% - 10px); /* 2列で表示 */
   }
-}
-
-.compete-edit-delete-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
 }
