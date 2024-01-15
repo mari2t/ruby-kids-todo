@@ -296,40 +296,18 @@ ul::after {
   margin-bottom: 5px;
 }
 
-/* 編集フォームのスタイリング */
+/* 設定編集フォームのスタイリング */
+/* edit.html.erb */
 .edit-form-container {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 600px;
-  margin: 20px auto;
+  margin: 20px 10px;
 }
 
-.edit-form-group {
-  margin-bottom: 20px;
-}
-
-.edit-form-group label {
-  display: block;
-  margin-bottom: 8px;
-  color: #333;
-  font-weight: bold;
-}
-
-.edit-form-group input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* チェックボックスのスタイル調整 */
-.edit-form-group input[type="checkbox"] {
-  margin-right: 10px;
-}
-
-/* past_tasks */
+/* いままでのやることページのスタイリング */
 /* past_tasks */
 
 .task-status {

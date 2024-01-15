@@ -16,6 +16,7 @@
       <%= form.text_field :display_background, placeholder: @setting.display_background %>
     </div>
     <%= form.submit "更新", class: "save-button" %>
+    <%= link_to 'キャンセル', settings_path, class: "cancel-button" %>
   <% end %>
-  <%= link_to 'キャンセル', settings_path, class: "cancel-button" %>
 </div>
+<%= link_to 'キャンセル', settings_path, class: "cancel-button" %>

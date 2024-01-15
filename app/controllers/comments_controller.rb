@@ -9,16 +9,19 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to tasks_path(date: @comment.date), notice: 'コメントを追加しました。'
+      redirect_to past_tasks_tasks_path
     else
       render :new
     end
   end
 
+  def edit
+
+  end
 
   def update
     if @comment.update(comment_params)
-      redirect_to tasks_path(date: @comment.date), notice: 'コメントを更新しました。'
+      redirect_to past_tasks_tasks_path
     else
       render :edit
     end
@@ -34,7 +37,7 @@ class CommentsController < ApplicationController
   private
 
   def set_comment
-    @comment = Comment.find_by(date: params[:date])
+    @comment = Comment.find(params[:id])
   end
 
   def comment_params

@@ -1,7 +1,7 @@
 <h1>📖これまでのやること</h1>
 <% if @tasks_by_date %>
   <div class="inner-tasklist">
-    <% @tasks_by_date.each do |date, tasks| %>
+    <% @tasks_by_date.sort_by { |date, _| date }.reverse.each do |date, tasks| %>
       <h2><%= date %></h2>
       <% comment = Comment.find_by(date: date) %>
       <p><%= comment&.comment || 'コメントはまだありません。' %></p>
