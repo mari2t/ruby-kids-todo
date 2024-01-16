@@ -1,5 +1,17 @@
 # MakeLog
 
+## 2024/1/16
+
+1. コメント追加及び編集後いままでのやることページの上にinputやbuttonが残った状態に対応
+   1. rails c → Comment.all.each { |comment| puts comment }でデータを確認。→おかしいところはない
+   2. rails routesでルート確認。→リダイレクトのルーティングはOK
+   3. task.rbに不要なコメントとの関連付けがあったので削除→影響なし
+2. エラー整理
+   1. commentを作成か更新するとinput及びbuttonが残ってしまう。
+   2. このエラーが起きると、他のページへ遷移するとそのページのHTML+past_taskのHTMLが表示される。  
+      ページ遷移するとinput及びbuttonは消える。
+   3. commentを更新するたびに更新回数n回分past_taskのHTMLが表示される。
+
 ## 2024/1/15
 
 1. いままでのやることページを最新日の日付順で並べるようにした

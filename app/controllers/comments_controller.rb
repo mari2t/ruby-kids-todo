@@ -9,9 +9,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
-      redirect_to past_tasks_tasks_path
+      redirect_to past_tasks_tasks_path,notice: 'コメントを更新しました'
     else
-      render :new
+      render :new,notice: 'コメントを更新に失敗しました'
     end
   end
 
