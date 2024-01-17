@@ -20,6 +20,6 @@ Rails.application.routes.draw do
   end
 
   resource :settings, only: [:index, :show, :edit, :update]
-  resources :comments, except: [:index, :show]
+  resources :comments, only: [:index, :new, :create, :edit, :update, :destroy]
   
 end

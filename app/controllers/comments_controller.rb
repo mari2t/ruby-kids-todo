@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to past_tasks_tasks_path,notice: 'コメントを更新しました'
     else
-      render :new,notice: 'コメントを更新に失敗しました'
+      render :new
     end
   end
 

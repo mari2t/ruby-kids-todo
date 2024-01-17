@@ -1,6 +1,7 @@
 <h1>コメントを書く</h1>
 <div class="edit-form-container">
   <%= form_with(model: @comment, url: comments_path) do |form| %>
+    <%#  隠しフィールドは、ユーザーには見えないが、フォームが送信される際にデータとして送信される  %>
     <%= form.hidden_field :date %>
     <div class="field">
       <%= form.label :comment %>

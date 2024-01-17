@@ -1,5 +1,14 @@
 # MakeLog
 
+## 2024/1/17
+
+1. コメント追加及び編集後いままでのやることページの上にinputやbuttonが残った状態に対応（引き続き）
+   1. Javascriptがあると影響するということで消してみた→影響なし
+   2. application.jsのimport "@hotwired/turbo-rails"; を削除→エラーが消えた
+2. 上記変更による変更事象  
+   削除前：turbo.es2017-esm.js:520 Fetch finished loading: GET  
+   削除後：Navigated to http://localhost:3000/
+
 ## 2024/1/16
 
 1. コメント追加及び編集後いままでのやることページの上にinputやbuttonが残った状態に対応
