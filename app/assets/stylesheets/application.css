@@ -20,9 +20,11 @@ header {
   align-items: center;
   padding: 10px 20px;
 }
-.header-title {
+.header-title a {
   font-size: x-large;
   text-align: center;
+  text-decoration: none;
+  color: white;
 }
 
 header nav a {

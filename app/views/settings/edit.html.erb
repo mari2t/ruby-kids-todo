@@ -1,22 +1,21 @@
 <h1>設定を編集</h1>
-<div class="edit-form-container">
-  <%= form_with(model: @setting, url: settings_path, method: :patch) do |form| %>
+<%= form_with(model: @setting, url: settings_path, method: :patch) do |form| %>
+  <div class="settings-container">
     <% (1..10).each do |i| %>
-      <div class="form-group">
+      <div class="setting-item">
         <%= form.label "reward_url#{i}", "報酬 URL #{i}" %>
         <%= form.text_field "reward_url#{i}", placeholder: @setting.send("reward_url#{i}") %>
       </div>
     <% end %>
-    <div class="form-group">
+    <div class="setting-item">
       <%= form.label :show_uncompleted_todos, "未完了のTODOを表示" %>
       <%= form.check_box :show_uncompleted_todos %>
     </div>
-    <div class="form-group">
+    <div class="setting-item">
       <%= form.label :display_background, "背景表示" %>
-      <%= form.text_field :display_background, placeholder: @setting.display_background %>
+      <%= form.select :display_background, ['初期設定', 'プリンセス', '恐竜'], {}, { class: "form-control" } %>
     </div>
-    <%= form.submit "更新", class: "save-button" %>
-    <%= link_to 'キャンセル', settings_path, class: "cancel-button" %>
-  <% end %>
-</div>
-<%= link_to 'キャンセル', settings_path, class: "cancel-button" %>
+  </div>
+  <%= form.submit "更新", class: "save-button" %>
+  <%= link_to 'キャンセル', settings_path, class: "cancel-button" %>
+<% end %>

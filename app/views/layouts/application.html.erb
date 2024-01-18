@@ -8,10 +8,10 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
+  <body style="background-color: <%= theme_color(@theme_name) %>;">
     <header>
       <div class="header-container">
-        <div class="header-title">Kids Todo App</div>
+        <div class="header-title"><%= link_to 'Kids Todo App', root_path %></div>
         <nav>
           <%= link_to '📝きょうのやること', root_path %>
           <%= link_to '📖これまでのやること', past_tasks_tasks_path %>
