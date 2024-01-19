@@ -1,13 +1,14 @@
 module ApplicationHelper
-    def theme_color(theme_name)
-      case theme_name
-      when '恐竜'
-        '#b3d7de' 
-      when 'プリンセス'
-        '#d8ccd3' 
-      else
-        '#e9c680' # デフォルト色
-      end
-    end
+  def background_image_style(theme_name)
+    image_url = case theme_name
+                when 'プリンセス'
+                  asset_path('princess_background.jpg')
+                when '恐竜'
+                  asset_path('dinosaur_background.jpg')
+                else
+                  asset_path('default_background.jpg')
+                end
+
+    "background: url(#{image_url}) no-repeat center center; background-size: cover;"
   end
-  
+end

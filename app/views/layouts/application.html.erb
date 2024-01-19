@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body style="background-color: <%= theme_color(@theme_name) %>;">
+  <body style="<%= background_image_style(@setting.display_background) %>">
     <header>
       <div class="header-container">
         <div class="header-title"><%= link_to 'Kids Todo App', root_path %></div>
