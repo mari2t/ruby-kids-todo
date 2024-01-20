@@ -1,5 +1,11 @@
 # MakeLog
 
+## 2024/1/20
+
+1. ページネーション実装
+   1. gem 'kaminari' (Gemfileに追記)
+   2. bundle install
+
 ## 2024/1/19
 
 1. 設定で背景の画像変更をできるようにした。

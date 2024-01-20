@@ -2,20 +2,24 @@ class TasksController < ApplicationController
     before_action :set_task, only: [:edit, :update, :destroy]
 
     def index
-      @task = Task.new  
+      @task = Task.new
       show_uncompleted = Setting.last.show_uncompleted_todos 
     
-      if show_uncompleted
-          @tasks_by_date = Task.all.group_by { |task| task.created_at.to_date }
-      else
-          @tasks_by_date = Task.where(completed: true).group_by { |task| task.created_at.to_date }
-      end
+      # 全てのタスクまたは完了したタスクを取得
+      tasks_query = show_uncompleted ? Task.all : Task.where(completed: true)
     
-      # 今日の日付でフィルタリングされたタスクのリストを@tasks変数に割り当てる
+      # 日付ごとにタスクをグループ化し、ページネーションを適用
+      @tasks_by_date = tasks_query.group_by { |task| task.created_at.to_date }
+      @paginated_tasks = Kaminari.paginate_array(@tasks_by_date.to_a).page(params[:page]).per(2)
+    
+      # 今日のタスクのリストを取得
       start_of_day = Date.today.beginning_of_day
       end_of_day = Date.today.end_of_day
-      @tasks = Task.where(created_at: start_of_day..end_of_day)
+      # タスクの取得と並び替え
+      @tasks = Task.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day).order(created_at: :desc)
     end
+    
+    
     
 
 
@@ -69,17 +73,22 @@ class TasksController < ApplicationController
         end
     end
 
-def past_tasks
-  @show_uncompleted = Setting.last.show_uncompleted_todos
-
-  if @show_uncompleted
-    # 未完了のタスクも含む全てのタスクを取得
-    @tasks_by_date = Task.where("created_at <= ?", Date.tomorrow).group_by { |task| task.created_at.to_date }
-  else
-    # 完了したタスクのみを取得
-    @tasks_by_date = Task.where("completed = ? AND created_at <= ?", true, Date.tomorrow).group_by { |task| task.created_at.to_date }
-  end
-end
+    def past_tasks
+      @show_uncompleted = Setting.last.show_uncompleted_todos
+  
+      tasks_query = if @show_uncompleted
+                      Task.all.order(created_at: :desc)
+                    else
+                      Task.where(completed: true).order(created_at: :desc)
+                    end
+  
+      # 全タスクを日付ごとにグループ化
+      grouped_tasks = tasks_query.group_by { |task| task.created_at.to_date }
+  
+      # 配列に変換し、ページネーションを適用
+      @tasks_by_date_paginated = Kaminari.paginate_array(grouped_tasks.to_a).page(params[:page]).per(2)
+    end
+    
   
 
     private

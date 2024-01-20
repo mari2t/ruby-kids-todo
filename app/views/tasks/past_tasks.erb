@@ -1,7 +1,8 @@
 <h1>📖これまでのやること</h1>
-<% if @tasks_by_date %>
+<% if @tasks_by_date_paginated.present? %>
+  <%= paginate @tasks_by_date_paginated %>
   <div class="inner-tasklist">
-    <% @tasks_by_date.sort_by { |date, _| date }.reverse.each do |date, tasks| %>
+    <% @tasks_by_date_paginated.each do |date, tasks| %>
       <h2><%= date %></h2>
       <% comment = Comment.find_by(date: date) %>
       <p><%= comment&.comment || 'コメントはまだありません。' %></p>
@@ -29,4 +30,5 @@
       </ul>
     <% end %>
   </div>
+  <%= paginate @tasks_by_date_paginated %>
 <% end %>

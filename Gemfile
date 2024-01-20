@@ -44,7 +44,8 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-
+# 2024/01/20 add for pagenation
+gem 'kaminari'
 
 group :development do
   gem 'prettier_print'
@@ -74,3 +75,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
