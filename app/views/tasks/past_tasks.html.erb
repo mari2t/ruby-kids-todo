@@ -4,6 +4,7 @@
   <div class="inner-tasklist">
     <% @tasks_by_date_paginated.each do |date, tasks| %>
       <h2><%= date %></h2>
+      <%= button_to "けす", destroy_by_date_tasks_path(date: date), method: :delete, data: { confirm: 'この日に作成された全タスクを削除します。よろしいですか？' } %>
       <% comment = Comment.find_by(date: date) %>
       <p><%= comment&.comment || 'コメントはまだありません。' %></p>
       <% if comment %>

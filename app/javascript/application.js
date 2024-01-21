@@ -1,4 +1,5 @@
 import "controllers";
+import "@hotwired/turbo-rails";
 
 window.mathChallenge = function () {
   const num1 = Math.floor(Math.random() * 9) + 1; // 1 から 9 まで

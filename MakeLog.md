@@ -1,8 +1,22 @@
 # MakeLog
 
+## 2024/1/21
+
+1. 過去のTODOの日にちでの一括削除
+   1. tasks_controllerにdef destroy_by_dateを追加
+   2. past_tasks.html.erbに<%= link_to 'この日のタスクを削除'～を追加
+   3. routes.rbにdestroy_by_dateを追記
+   4. linkだとdestroy出来なかった（Getを送信していた）がbuttonにしたら出来た。
+2. 1/15に発生した更新後inputやbuttonが残ってしまうエラーの原因が判明。  
+   past*tasks.html.erbのファイル名にhtmlが抜けていたからだった。  
+   1でpast_tasksのビューファイル名を手打ちしようと思ってよく見たときにファイル名にhtmlが抜けていたので気が付いた。  
+   試しにapplication.jsのimport "@hotwired/turbo-rails"; を戻してhtmlをファイル名から抜いてみたらエラーが再現し、  
+   htmlをファイル名に追記したらエラーが出なかった。原因がわかってよかった (;^*^=3
+3. 2でapplication.jsのimport "@hotwired/turbo-rails"; を戻したけど、戻した方がページの移り変わりが早くなった。
+
 ## 2024/1/20
 
-1. ページネーション実装
+1. 過去のTODOの日にちでの一括削除
    1. gem 'kaminari' (Gemfileに追記)
    2. bundle install
 

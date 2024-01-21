@@ -63,6 +63,13 @@ class TasksController < ApplicationController
         redirect_to tasks_path
     end
 
+    def destroy_by_date
+      date = params[:date].to_date
+      Task.where('created_at >= ? AND created_at < ?', date.beginning_of_day, date.end_of_day).destroy_all
+      redirect_to tasks_path, notice: '指定日付のタスクが削除されました。'
+    end
+    
+
     def complete
         @task = Task.find(params[:id])
         @task.update(completed: true, completion_date: Date.today)
