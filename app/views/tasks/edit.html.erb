@@ -1,4 +1,6 @@
-<h1>やること　を　かえる</h1>
+<div class="page-title">
+  <h1>やることをかえる</h1>
+</div>
 <%= form_with(model: @task, local: true) do |form| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">

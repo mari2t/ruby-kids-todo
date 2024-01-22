@@ -1,4 +1,6 @@
-<h1>📝きょうのやること</h1>
+<div class="page-title">
+  <h1>📝きょうのやること</h1>
+</div>
 <%# タスクを作成 %>
 <% start_of_day = Date.today.beginning_of_day %>
 <% end_of_day = Date.today.end_of_day %>
@@ -18,9 +20,7 @@
       <div class="input-container">
         <%= form.label "やること" %>
         <%= form.text_field :title %>
-      </div>
-      <div class="determine">
-        <%= form.submit "決定" %>
+        <%= form.submit "きめる" %>
       </div>
     </div>
   <% end %>

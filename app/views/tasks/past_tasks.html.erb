@@ -1,16 +1,19 @@
-<h1>📖これまでのやること</h1>
+<div class="page-title">
+  <h1>📖これまでのやること</h1>
+</div>
 <% if @tasks_by_date_paginated.present? %>
   <%= paginate @tasks_by_date_paginated %>
   <div class="inner-tasklist">
     <% @tasks_by_date_paginated.each do |date, tasks| %>
       <h2><%= date %></h2>
-      <%= button_to "けす", destroy_by_date_tasks_path(date: date), method: :delete, data: { confirm: 'この日に作成された全タスクを削除します。よろしいですか？' } %>
+      <%= button_to "このひ　の　やること　を　ぜんぶけす", destroy_by_date_tasks_path(date: date), method: :delete, data: { confirm: 'この日に作成された全タスクを削除します。よろしいですか？' } %>
       <% comment = Comment.find_by(date: date) %>
       <p><%= comment&.comment || 'コメントはまだありません。' %></p>
       <% if comment %>
-        <%= link_to 'コメントを編集', edit_comment_path(comment) %>
+        <%= button_to 'コメントを編集', edit_comment_path(comment) %>
+        <%= button_to 'コメントを削除', comment_path(comment), method: :delete, data: { confirm: 'このコメントを削除します。よろしいですか？' } %>
       <% else %>
-        <%= link_to 'コメントを追加', new_comment_path(date: date) %>
+        <%= button_to 'コメントを追加', new_comment_path(date: date) %>
       <% end %>
       <ul>
         <% tasks.each do |task| %>

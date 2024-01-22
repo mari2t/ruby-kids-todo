@@ -34,36 +34,63 @@ header nav a {
 }
 
 /* index */
-h1 {
+.page-title {
   text-align: center;
-  color: #333;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
-.form-container,
+.page-title h1 {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 24px;
+}
+
+.input-button-container {
+  width: 60%;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  background-color: whitesmoke;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-container input[type="text"] {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid black;
+
+  border-radius: 4px;
+}
+
+#error_explanation {
+  color: red;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+#error_explanation ul {
+  list-style: none;
+  padding: 0;
+}
+
+#error_explanation ul li {
+  margin-bottom: 5px;
+}
+
 .inner-tasklist {
   width: 80%;
   margin: 0 auto; /* 中央寄せ */
-}
-.input-button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* 子要素を垂直方向の中心に配置 */
-}
-.input-container {
-  width: 60%; /* 幅の調整 */
-  margin-right: 20px; /* 右の余白を設定 */
-}
-.field {
-  display: flex;
-  text-align: center;
-  align-items: center;
-}
-
-input[type="text"],
-textarea {
-  width: 80%; /* 幅の設定 */
-  padding: 10px; /* パディングの設定 */
 }
 
 /* ボタンのスタイリング */
@@ -79,13 +106,13 @@ textarea {
   display: flex;
 }
 
-.determine {
+.determine-button {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.determine input[type="submit"],
+.determine-button input[type="submit"],
 .determine button,
 .complete-task-button,
 .edit-button,

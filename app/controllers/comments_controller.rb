@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
   def destroy
     date = @comment.date
     @comment.destroy
-    redirect_to tasks_path(date: date), notice: 'コメントを削除しました。'
+    redirect_to past_tasks_tasks_path
   end
 
   private
