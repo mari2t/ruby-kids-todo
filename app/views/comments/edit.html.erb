@@ -1,14 +1,12 @@
 <div class="page-title">
   <h1>コメントを編集する</h1>
 </div>
-<div class="edit-form-container">
-  <%= form_with(model: @comment, url: comment_path(@comment), method: :patch) do |form| %>
-    <div class="field">
+<%= form_with(model: @comment, url: comment_path(@comment), method: :patch) do |form| %>
+  <div class="input-button-container">
+    <div class="input-container">
       <%= form.label :comment, 'コメント', id: "comment-label" %>
-      <%= form.text_area :comment, id: "comment-label" %>
-    </div>
-    <div class="actions">
+      <%= form.text_area :comment, id: "comment-text-area" %>
       <%= form.submit "更新する" %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

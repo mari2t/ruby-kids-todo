@@ -1,14 +1,15 @@
 <div class="page-title">
   <h1>コメントを書く</h1>
 </div>
-<div class="edit-form-container">
-  <%= form_with(model: @comment, url: comments_path) do |form| %>
-    <%#  隠しフィールドは、ユーザーには見えないが、フォームが送信される際にデータとして送信される  %>
-    <%= form.hidden_field :date %>
-    <div class="field">
-      <%= form.label :comment %>
+<%= form_with(model: @comment, url: comments_path) do |form| %>
+  <%#  隠しフィールドは、ユーザーには見えないが、フォームが送信される際にデータとして送信される  %>
+  <%= form.hidden_field :date %>
+  <div class="input-button-container">
+    <div class="input-container">
+      <%= form.label  :comment , 'コメント' %>
       <%= form.text_area :comment %>
+      <%= form.submit "コメントを保存" %>
     </div>
-    <%= form.submit "コメントを保存" %>
-  <% end %>
+  </div>
+<% end %>
 </div>
