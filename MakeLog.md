@@ -1,5 +1,9 @@
 # MakeLog
 
+## 2024/1/24
+
+1. CSS整備 past_tasks.html.erb
+
 ## 2024/1/23
 
 1. CSS整備 input周り

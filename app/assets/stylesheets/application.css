@@ -72,6 +72,9 @@ header nav a {
   display: block;
   margin-bottom: 10px;
   font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .input-container textarea {
@@ -122,16 +125,15 @@ header nav a {
 .inner-tasklist {
   width: 80%;
   margin: 0 auto; /* 中央寄せ */
+  background-color: darkgray;
 }
 
 /* ボタンのスタイリング */
-
 .compete-edit-delete-wrapper {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
-
 .button-container {
   margin-bottom: 20px;
   display: flex;
@@ -160,6 +162,25 @@ header nav a {
   background-color: #0056e0; /* ホバー時の背景色を変更 */
 }
 
+.small-edit-button {
+  background-color: #5295fa;
+  color: white;
+  padding: 4px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+.small-edit-button:hover {
+  background-color: #3573d8; /* ホバー時の背景色を変更 */
+}
+
 .link-change-button,
 .return-button,
 .cancel-button {
@@ -183,7 +204,8 @@ header nav a {
   background-color: #2d672f;
 }
 
-.link-delete-button {
+.link-delete-button,
+.delete-button {
   background-color: #cc0000;
   color: white;
   padding: 10px 20px;
@@ -197,17 +219,41 @@ header nav a {
   border: none;
   border-radius: 10px;
 }
+.link-delete-button:hover,
+.delete-button:hover {
+  background-color: #680808;
+}
 
-.link-delete-button:hover {
-  background-color: #640202;
+.small-delete-button {
+  background-color: #d13838;
+  color: white;
+  padding: 4px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+.small-delete-button:hover {
+  background-color: #642020;
 }
 
 /* タスクリストのスタイル */
 .inner-tasklist {
   width: 90%;
   margin: 0 auto;
-  padding: 1em 0;
+  background: rgba(255, 255, 255, 0.5); /* 半透明の白色 */
+  backdrop-filter: blur(10px); /* ぼかし効果 */
+  border-radius: 10px; /* 角丸のデザイン */
+  padding: 20px; /* 内側の余白 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* シャドウを追加 */
 }
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -222,6 +268,7 @@ li {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 30%;
   margin-bottom: 1em;
+  border-radius: 10px;
 }
 
 ul::after {
@@ -231,6 +278,65 @@ ul::after {
 
 .inner-task {
   padding: 1em;
+}
+
+.date-and-delete {
+  display: flex;
+  align-items: center; /* 中央揃え */
+  justify-content: center;
+  padding: 1rem;
+}
+.date-and-delete h2 {
+  margin-right: 20px;
+}
+
+.date-comment {
+  position: relative;
+  display: inline-block;
+  margin: 1.5em 0 1.5em 15px;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background: #fff;
+  border: solid 3px #555;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.date-comment:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  margin-top: -12px;
+  border: 12px solid transparent;
+  border-right: 12px solid #fff;
+  z-index: 2;
+}
+
+.date-comment:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -14px;
+  border: 14px solid transparent;
+  border-right: 14px solid #555;
+  z-index: 1;
+}
+
+.date-comment p {
+  margin: 0;
+  padding: 0;
+}
+.flex-container {
+  display: flex;
+}
+
+.comment-emoji {
+  font-size: xx-large;
 }
 /* タスクが完了した場合のスタイル */
 .completed {
