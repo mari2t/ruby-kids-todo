@@ -1,5 +1,13 @@
 # MakeLog
 
+## 2024/1/25
+
+1. CSS整備 past_tasks.html.erb
+2. index.html.erbのタスク並び順を古い順からに変更
+3. past_tasks.html.erbでもタスク並び順を古い順からに変更  
+   古い順：order(created_at: :asc)  
+   新しい順：order(created_at: :desc)
+
 ## 2024/1/24
 
 1. CSS整備 past_tasks.html.erb

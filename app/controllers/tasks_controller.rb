@@ -16,7 +16,8 @@ class TasksController < ApplicationController
       start_of_day = Date.today.beginning_of_day
       end_of_day = Date.today.end_of_day
       # タスクの取得と並び替え
-      @tasks = Task.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day).order(created_at: :desc)
+      @tasks = Task.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day).order(created_at: :asc)
+
     end
     
     
@@ -82,19 +83,21 @@ class TasksController < ApplicationController
 
     def past_tasks
       @show_uncompleted = Setting.last.show_uncompleted_todos
-  
+    
+      # タスクを古い順に取得
       tasks_query = if @show_uncompleted
-                      Task.all.order(created_at: :desc)
+                      Task.all.order(created_at: :asc)
                     else
-                      Task.where(completed: true).order(created_at: :desc)
+                      Task.where(completed: true).order(created_at: :asc)
                     end
-  
-      # 全タスクを日付ごとにグループ化
+    
+      # タスクを日付ごとにグループ化
       grouped_tasks = tasks_query.group_by { |task| task.created_at.to_date }
-  
-      # 配列に変換し、ページネーションを適用
-      @tasks_by_date_paginated = Kaminari.paginate_array(grouped_tasks.to_a).page(params[:page]).per(2)
+    
+      # グループ化されたタスクを新しい日付順に並べ替える
+      @tasks_by_date_paginated = Kaminari.paginate_array(grouped_tasks.to_a.sort_by { |date, _tasks| -date.to_time.to_i }).page(params[:page]).per(2)
     end
+    
     
   
 

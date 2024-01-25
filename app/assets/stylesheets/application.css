@@ -122,12 +122,6 @@ header nav a {
   margin-bottom: 5px;
 }
 
-.inner-tasklist {
-  width: 80%;
-  margin: 0 auto; /* 中央寄せ */
-  background-color: darkgray;
-}
-
 /* ボタンのスタイリング */
 .compete-edit-delete-wrapper {
   display: flex;
@@ -280,6 +274,7 @@ ul::after {
   padding: 1em;
 }
 
+/* 過去のタスクの日付と過去のタスク削除ボタン */
 .date-and-delete {
   display: flex;
   align-items: center; /* 中央揃え */
@@ -290,54 +285,78 @@ ul::after {
   margin-right: 20px;
 }
 
+/* コメント */
 .date-comment {
-  position: relative;
-  display: inline-block;
-  margin: 1.5em 0 1.5em 15px;
-  padding: 7px 10px;
-  min-width: 120px;
-  max-width: 100%;
-  color: #555;
-  font-size: 16px;
-  background: #fff;
-  border: solid 3px #555;
-  box-sizing: border-box;
-  border-radius: 10px;
-}
-
-.date-comment:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -24px;
-  margin-top: -12px;
-  border: 12px solid transparent;
-  border-right: 12px solid #fff;
-  z-index: 2;
-}
-
-.date-comment:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -30px;
-  margin-top: -14px;
-  border: 14px solid transparent;
-  border-right: 14px solid #555;
-  z-index: 1;
-}
-
-.date-comment p {
-  margin: 0;
-  padding: 0;
-}
-.flex-container {
   display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 300px;
+  margin-left: 15px;
+  padding: 0.8em 1.2em;
+  border: 3px solid #2589d0;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333333;
+}
+
+.date-comment::before,
+.date-comment::after {
+  position: absolute;
+  left: -15px;
+  width: 15px;
+  height: 30px;
+  clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  content: "";
+}
+
+.date-comment::before {
+  background-color: #2589d0;
+}
+
+.date-comment::after {
+  left: -11px;
+  background-color: #fff;
+}
+
+.comment-container {
+  display: flex;
+  align-items: center; /* 中央揃え */
+  justify-content: center;
+  padding: 1rem;
+  font-size: medium;
 }
 
 .comment-emoji {
   font-size: xx-large;
 }
+
+/* ページネーション全体のスタイル */
+.paginate {
+  justify-content: center; /* 中央揃え */
+  align-items: center; /* アイテムを垂直方向に中央揃え */
+  margin: 0 auto;
+}
+
+.paginate a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: inline-block; /* ブロックとして表示 */
+  background-color: white;
+}
+
+.paginate .page.current {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: inline-block; /* ブロックとして表示 */
+  background-color: gold;
+}
+
+.paginate a:hover:not(.page.current) {
+  background-color: #ddd;
+}
+
 /* タスクが完了した場合のスタイル */
 .completed {
   color: #ccc;
