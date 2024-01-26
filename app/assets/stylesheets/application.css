@@ -143,6 +143,7 @@ header nav a {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-weight: bolder;
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
@@ -157,7 +158,7 @@ header nav a {
 }
 
 .small-edit-button {
-  background-color: #5295fa;
+  background-color: #5295fa; /* 青色 */
   color: white;
   padding: 4px 5px;
   text-align: center;
@@ -185,6 +186,7 @@ header nav a {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-weight: bolder;
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
@@ -207,6 +209,7 @@ header nav a {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  font-weight: bolder;
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
@@ -237,10 +240,35 @@ header nav a {
   background-color: #642020;
 }
 
+/* ご褒美リンクのスタイル */
+.reward-link {
+  color: #fff;
+  background: linear-gradient(to right, #fa709a, #fee140);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bolder;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+
+.reward-link:hover {
+  -webkit-transform: translate(0, -2px);
+  transform: translate(0, -2px);
+  color: #fff;
+  -webkit-box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
 /* タスクリストのスタイル */
 .inner-tasklist {
   width: 90%;
-  margin: 0 auto;
+  margin: 8px auto;
   background: rgba(255, 255, 255, 0.5); /* 半透明の白色 */
   backdrop-filter: blur(10px); /* ぼかし効果 */
   border-radius: 10px; /* 角丸のデザイン */
@@ -272,6 +300,10 @@ ul::after {
 
 .inner-task {
   padding: 1em;
+}
+
+.date-task-container {
+  padding: 0.2rem;
 }
 
 /* 過去のタスクの日付と過去のタスク削除ボタン */
@@ -461,6 +493,13 @@ ul::after {
 }
 
 /* 各設定項目のスタイル */
+.edit-return-buttons {
+  display: flex;
+  align-items: center; /* 中央揃え */
+  justify-content: center;
+  padding: 1rem;
+}
+
 .setting-item {
   margin-bottom: 20px;
 }

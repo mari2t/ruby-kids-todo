@@ -18,6 +18,8 @@
       <%= form.select :display_background, ['初期設定', 'プリンセス', '恐竜'], {}, { class: "form-control" } %>
     </div>
   </div>
-  <%= form.submit "更新", class: "save-button" %>
-  <%= link_to 'キャンセル', settings_path, class: "cancel-button" %>
+  <div class="edit-return-buttons">
+    <%= form.submit "更新", class: "save-button" %>
+    <%= link_to 'キャンセル', settings_path, class: "cancel-button" %>
+  </div>
 <% end %>

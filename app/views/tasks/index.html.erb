@@ -43,9 +43,9 @@
             <div class="compete-edit-delete-wrapper">
               <% if task.completed %>
                 <% if reward_urls[index] %>
-                  <%= link_to "💎ごほうび💎", reward_urls[index], target: "_blank", class: "reward-link" %>
+                  <%= link_to "ごほうび", reward_urls[index], target: "_blank", class: "reward-link" %>
                 <% else %>
-                  <div class="competed-text">💎ごほうび💎</div>
+                  <div class="competed-text">ごほうび</div>
                 <% end %>
               <% else %>
                 <%= button_to "できた", complete_task_path(task), method: :put, remote: true, class: "complete-task-button" %>

@@ -1,5 +1,9 @@
 # MakeLog
 
+## 2024/1/26
+
+1. CSS整備 これまでのやること、設定画面
+
 ## 2024/1/25
 
 1. CSS整備 past_tasks.html.erb
