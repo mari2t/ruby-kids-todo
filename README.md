@@ -25,7 +25,7 @@ This is a TODO application for children.
 
 ## Purpose of creation
 
-1. やることについて、子供自身が予定立を立てたり実行する習慣をつけさせたい
+1. やることについて、子供自身が予定を立てたり実行する習慣をつけさせたい
 2. 実行後の振り返りをしたりコメントを付けたい
 3. Ruby on rails のアプリをつくってみたい
 
