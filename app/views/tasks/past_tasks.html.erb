@@ -9,24 +9,8 @@
     <% @tasks_by_date_paginated.each do |date, tasks| %>
       <div class="date-task-container">
         <div class="date-and-delete">
-          <h2><%= date %></h2>
-          <%= button_to "この日のタスクを消す", destroy_by_date_tasks_path(date: date), method: :delete, data: { confirm: 'この日に作成された全タスクを削除します。よろしいですか？' } , class: 'small-delete-button'%>
+          <h2>-----------------------　<%= date %>　のやること　-----------------------</h2>
           <% comment = Comment.find_by(date: date) %>
-        </div>
-        <div class="comment-container">
-          <% if comment&.comment %>
-            <span class="comment-emoji">😄</span> <span class="date-comment"><%= comment.comment %></span>
-          <% else %>
-            <span class="comment-emoji">👀</span> <span class="date-comment">コメントはまだありません。</span>
-          <% end %>
-        </div>
-        <div class="comment-container">
-          <% if comment %>
-            <%= link_to 'コメントを編集', edit_comment_path(comment) , class: 'small-edit-button'%>
-            <%= button_to 'コメントを削除', comment_path(comment),  class: 'small-delete-button',method: :delete, data: { confirm: 'このコメントを削除します。よろしいですか？' } %>
-          <% else %>
-            <%= link_to 'コメントを追加', new_comment_path(date: date) , class: 'small-edit-button'%>
-          <% end %>
         </div>
         <ul>
           <% tasks.each do |task| %>
@@ -45,6 +29,27 @@
             <% end %>
           <% end %>
         </ul>
+        <div class="comment-container">
+          <% if comment&.comment %>
+            <span class="comment-emoji">😄</span> <span class="date-comment"><%= comment.comment %></span>
+          <% else %>
+            <span class="comment-emoji">👀</span> <span class="date-comment">コメントはまだありません。</span>
+          <% end %>
+        </div>
+        <div class="comment-container">
+          <% if comment %>
+            <%= link_to 'コメントを編集', edit_comment_path(comment) , class: 'small-edit-button'%>
+            <%= button_to 'コメントを削除', comment_path(comment),  class: 'small-delete-button',method: :delete, data: { confirm: 'このコメントを削除します。よろしいですか？' } %>
+          <% else %>
+            <%= link_to 'コメントを追加', new_comment_path(date: date) , class: 'small-edit-button'%>
+          <% end %>
+        </div>
+        <div class="date-and-delete">
+          <h2>-------------------------------------------------------------------------------------</h2>
+        </div>
+        <div class="date-and-delete">
+          <%= button_to "この日のタスクを消す", destroy_by_date_tasks_path(date: date), method: :delete, data: { confirm: 'この日に作成された全タスクを削除します。よろしいですか？' } , class: 'small-delete-button'%>
+        </div>
       <% end %>
     </div>
   </div>

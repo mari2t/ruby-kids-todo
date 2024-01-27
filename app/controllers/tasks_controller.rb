@@ -95,7 +95,7 @@ class TasksController < ApplicationController
       grouped_tasks = tasks_query.group_by { |task| task.created_at.to_date }
     
       # グループ化されたタスクを新しい日付順に並べ替える
-      @tasks_by_date_paginated = Kaminari.paginate_array(grouped_tasks.to_a.sort_by { |date, _tasks| -date.to_time.to_i }).page(params[:page]).per(2)
+      @tasks_by_date_paginated = Kaminari.paginate_array(grouped_tasks.to_a.sort_by { |date, _tasks| -date.to_time.to_i }).page(params[:page]).per(1)
     end
     
     
