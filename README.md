@@ -16,13 +16,16 @@ This is a TODO application for children.
 ## Features
 
 - rails on ruby
-- [設計ログ](./PlanLog.md)
-- [作成中のログ](./MakeLog.md)
-- [作成後のログ](./MadeLog.md)
 
 ## Creation Date
 
 2024/1/27
+
+## Log
+
+- [設計ログ](./PlanLog.md)
+- [作成ログ](./MakeLog.md)
+- [作成後ログ](./MadeLog.md)
 
 ## Purpose of creation
 
